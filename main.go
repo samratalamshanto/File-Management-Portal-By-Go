@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"File_Management_Portal/package/router"
+	"github.com/gin-gonic/gin"
+	"log"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	r := gin.Default()
+	router.Register(r)
+	log.Println("Application Run Successful")
+	err := r.Run(":9090")
+	if err != nil {
+		log.Fatalf("Application Run Failed, {}", err)
+	}
+
 }
